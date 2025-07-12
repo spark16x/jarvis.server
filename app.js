@@ -4,12 +4,9 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Use the router for handling routes
 app.use('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/index.html'));
+  res.send('Everything is ok ');
 });
 
 // Catch-all route for handling 404 errors
