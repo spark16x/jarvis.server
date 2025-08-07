@@ -1,12 +1,13 @@
 {
   "name": "nodejs-app",
   "version": "1.0.0",
-  "description": "A minimal Node.js web application.",
+  "description": "A minimal Node.js web + WebSocket application.",
   "main": "app.js",
   "author": "alphasec",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "ws": "^8.17.0"
   },
   "scripts": {
     "start": "node app.js"

@@ -1,19 +1,35 @@
 const express = require('express');
-const path = require('path');
+const http = require('http');
+const WebSocket = require('ws');
 
 const app = express();
 const PORT = 3000;
 
-
-app.use('/', (req, res) => {
-  res.send('Everything is ok ');
+// Serve a basic page (optional)
+app.get('/', (req, res) => {
+  res.send('WebSocket server is running 🚀');
 });
 
-// Catch-all route for handling 404 errors
-app.use((req, res, next) => {
-    res.status(404).send('404 | Error');
+const server = http.createServer(app);
+
+// WebSocket server
+const wss = new WebSocket.Server({ server });
+
+wss.on('connection', (ws) => {
+  console.log('🟢 New client connected');
+
+  ws.send('👋 Welcome to WebSocket server!');
+
+  ws.on('message', (message) => {
+    console.log(`📩 Received: ${message}`);
+    ws.send(`🔁 Echo: ${message}`);
   });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+  ws.on('close', () => {
+    console.log('🔴 Client disconnected');
+  });
+});
+
+server.listen(PORT, () => {
+  console.log(`🚀 HTTP + WebSocket server running at http://localhost:${PORT}`);
 });
