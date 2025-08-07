@@ -22,7 +22,8 @@ wss.on('connection', (ws) => {
 
   ws.on('message', (message) => {
     console.log(`📩 Received: ${message}`);
-    ws.send(`🔁 Echo: ${message}`);
+    ws.send(`🔁 Echo: ${message}1`);
+    ws.send(`🔁 Echo: ${message}2`);
   });
 
   ws.on('close', () => {
