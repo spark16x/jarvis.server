@@ -9,7 +9,7 @@ const PORT = 3000;
 
 // Setup Gemini
 const genAI = new GoogleGenAI(process.env.API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); // update to your model
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); // update to your model
 const systemInstruction = "You are JARVIS, a helpful AI assistant.";
 
 // Serve basic route
